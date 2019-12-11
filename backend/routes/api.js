@@ -12,15 +12,15 @@ router.get("/getPosts", (req, res) => {
 
 router.post("savePost", (req, res) => {
     postController.save(req, res);
-})
+});
 
 router.get("/getUser", (req, res) => {
     userController.load(req, res);
-})
+});
 
-router.post("/saveUser", (req, res) => {
+/*router.post("/saveUser", (req, res) => {
     userController.save(req, res);
-})
+})*/
 
 /*router.post("/saveStatus", (req, res) => {
     //const error = validationResult(req);

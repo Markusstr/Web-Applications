@@ -14,8 +14,8 @@ exports.save = async (req, res) => {
     console.log("Save");
     const post = new Post({
         username: req.body.username,
-        header: req.body.header,
-        text: req.body.date
+        text: req.body.text,
+        date: req.body.date
     });
 
     try {

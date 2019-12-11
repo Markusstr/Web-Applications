@@ -10,7 +10,7 @@ class Posts extends React.Component {
     async componentDidMount() {
         let response, data;
         try {
-            response = await fetch("http://localhost:8080/api/getPosts")
+            response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/getPosts")
             data = await response.json();
             this.setState({fetching: false, postList: data});
         }
@@ -22,6 +22,7 @@ class Posts extends React.Component {
 
     render() {
         const posts = this.state.postList;
+        console.log(posts);
     
         const postList = this.state.fetching ?
             <div className="loading">
@@ -29,11 +30,11 @@ class Posts extends React.Component {
             </div> :
             posts.map((item, index) => {
                 return(
-                    <div className="post-container">
+                    <div key={index} className="post-container">
                         <div className="center-row">
                             <h4>{item.username}</h4>
                             <div className="date">
-                            <h6>21.06.2019 16:45</h6>
+                            <h6>{item.date}</h6>
                             </div>
                         </div>
                         

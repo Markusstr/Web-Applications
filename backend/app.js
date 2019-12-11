@@ -6,9 +6,11 @@ let express = require("express"),
 let apiRoute = require("./routes/api");
 app.use("/api", apiRoute);
 
+app.get('/', (req, res) => {
+    res.send("Home Page");
+});
+
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
 
 let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 

@@ -6,6 +6,8 @@ let express = require("express"),
 let apiRoute = require("./routes/api");
 app.use("/api", apiRoute);
 
+app.use(express.json());
+
 let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 
 if (mongoURL == null) {

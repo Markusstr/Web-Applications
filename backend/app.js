@@ -7,7 +7,7 @@ let apiRoute = require("./routes/api");
 app.use("/api", apiRoute);
 
 app.get('/', (req, res) => {
-    res.send("Home Page");
+    res.send("Home");
 });
 
 app.use(cors());

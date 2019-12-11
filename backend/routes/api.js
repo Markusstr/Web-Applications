@@ -10,7 +10,7 @@ router.get("/getPosts", (req, res) => {
     postController.load(req, res);
 });
 
-router.post("savePost", (req, res) => {
+router.post("/savePost", (req, res) => {
     postController.save(req, res);
 });
 

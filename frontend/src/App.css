@@ -6,13 +6,22 @@
 }
 
 .post-container {
+    position: relative;
     height: 100%;
-    width: 500px;
-    margin: 10px;
+    margin-top: 15px;
     padding: 10px;
-    border-radius: 10px;
     background-color: white;
     box-shadow: 2px 2px 24px lightgray;
+}
+
+.center-row {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    position: absolute;
+    right: 10px;
 }
 
 .main-menu {
@@ -22,11 +31,6 @@
     padding-left: 8px;
     display: flex;
     align-items: center;
-}
-
-.main-menu-end {
-    display: flex;
-    justify-content: flex-end;
 }
 
 .loading {

@@ -30,7 +30,13 @@ class Posts extends React.Component {
             posts.map((item, index) => {
                 return(
                     <div className="post-container">
-                        <h4>{item.username}</h4>
+                        <div className="center-row">
+                            <h4>{item.username}</h4>
+                            <div className="date">
+                            <h6>21.06.2019 16:45</h6>
+                            </div>
+                        </div>
+                        
                         <hr />
                         <p>{item.text}</p>
                     </div>

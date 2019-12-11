@@ -1,0 +1,36 @@
+.app {
+    background-color: rgb(240, 240, 240);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-container {
+    height: 100%;
+    width: 500px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 24px lightgray;
+}
+
+.main-menu {
+    height: 80px;
+    background-color: white;
+    box-shadow: 2px 2px 24px lightgray;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.main-menu-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}

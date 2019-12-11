@@ -6,6 +6,7 @@ let express = require("express"),
 let apiRoute = require("./routes/api");
 app.use("/api", apiRoute);
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 

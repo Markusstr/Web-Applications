@@ -1,17 +1,18 @@
 let express = require("express"),
     app = express(),
-    mongoose = require("mongoose");
+    mongoose = require("mongoose"),
     cors = require("cors");
 
 let apiRoute = require("./routes/api");
+
+app.use(cors());
+app.use(express.json());
+
 app.use("/api", apiRoute);
 
 app.get('/', (req, res) => {
     res.send("Home");
 });
-
-app.use(cors());
-
 let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 
 if (mongoURL == null) {

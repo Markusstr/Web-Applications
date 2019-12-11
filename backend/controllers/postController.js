@@ -12,11 +12,10 @@ exports.load = async (req, res) => {
 
 exports.save = async (req, res) => {
     console.log("Save");
-    nimi = "Testi";
     const post = new Post({
         username: req.body.username,
         header: req.body.header,
-        text: req.body.text
+        text: req.body.date
     });
 
     try {

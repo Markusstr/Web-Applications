@@ -15,7 +15,23 @@ router.post("/savePost", (req, res) => {
 });
 
 router.get("/getUser", (req, res) => {
-    userController.load(req, res);
+    userController.loadUser(req, res);
+});
+
+router.post("/getUserByID", (req, res) => {
+    userController.loadUserByID(req, res);
+});
+
+router.post("/checkUser", (req, res) => {
+    userController.checkUser(req, res);
+});
+
+router.post("/saveUser", (req, res) => {
+    userController.saveUser(req, res);
+});
+
+router.post("/updateID", (req, res) => {
+    userController.updateID(req, res);
 });
 
 /*router.post("/saveUser", (req, res) => {

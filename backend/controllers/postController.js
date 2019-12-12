@@ -6,12 +6,11 @@ exports.load = async (req, res) => {
         res.status(200).json(post);
     }
     catch (err) {
-        res.status(404).json({"error": err});
+        res.status(404).json({error: err});
     }
 }
 
 exports.save = async (req, res) => {
-    console.log("Save");
     const post = new Post({
         username: req.body.username,
         text: req.body.text,
@@ -23,6 +22,6 @@ exports.save = async (req, res) => {
         res.status(200).json(savedPost);
     }
     catch (err) {
-        res.status(404).json({"error": err});
+        res.status(404).json({error: err});
     }
 };

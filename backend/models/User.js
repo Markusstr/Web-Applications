@@ -1,6 +1,7 @@
 let mongoose = require("mongoose");
 
 let UserSchema = mongoose.Schema({
+    sessionID: String,
     username: String,
     password: String
 });

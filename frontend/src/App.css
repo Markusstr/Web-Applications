@@ -29,12 +29,45 @@
     background-color: white;
     box-shadow: 2px 2px 24px lightgray;
     padding-left: 8px;
-    display: flex;
-    align-items: center;
+    padding-top: 20px;
+}
+
+.main-menu-username {
+    position: absolute;
+    right: 10px;
 }
 
 .loading {
     display: flex;
     justify-content: center;
     padding-top: 40px;
+}
+
+.login-box {
+    height: 350px;
+    width: 450px;
+    margin-top: 40px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 24px lightgray;
+}
+
+.login-header {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.login-wrongpass {
+    margin-top: 20px;
+}
+
+.login-container {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }

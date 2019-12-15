@@ -10,8 +10,7 @@ exports.loadUser = async (req, res) => {
     }
 }
 
-exports.loadUserByID = async (req, res) => 
-    console.log("TÄÄLLÄ OLLAAN" + req.body.sessionID);
+exports.loadUserByID = async (req, res) => {
     try {
         const user = await User.findOne({sessionID: req.body.sessionID});
         res.status(200).json(user);
@@ -22,7 +21,6 @@ exports.loadUserByID = async (req, res) =>
 }
 
 exports.checkUser = async (req, res) => {
-    //console.log(req.body);
     try {
         const user = await User.find({username: req.body.username, password: req.body.password});
         res.status(200).json(user);

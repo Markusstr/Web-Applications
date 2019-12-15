@@ -42,19 +42,12 @@ function App() {
                 <Menu />
                 <Switch>
                     <Route exact path="/" component={Posts} />
-                    <Route path="/test1" component={Test1} />
                     <Route path="/newpost" component={NewPost} />
                 </Switch>
             </BrowserRouter> :
             <Login />
             }
         </div>
-    );
-}
-
-const Test1 = () => {
-    return (
-        <p>this is test page1</p>
     );
 }
 

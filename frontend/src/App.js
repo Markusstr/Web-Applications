@@ -24,13 +24,10 @@ function App() {
 
     const loginCheck = async() => {
         let data = await checkCookie(username);
-        console.log(data)
         if (data === false) {
-            console.log("uusi")
             Cookies.set("sessionID", Math.random().toString(36).substr(2, 9), { expires: 7 });
         }
         else {
-            console.log("löytyi suoraan");
             dispatch(setLoggedState());
             dispatch(setSessionID(Cookies.get("sessionID")));
             dispatch(setUsername(data.username));

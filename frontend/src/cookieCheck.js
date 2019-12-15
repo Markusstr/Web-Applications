@@ -18,7 +18,7 @@ export const checkCookie = async(username) => {
         data = await response.json();
     }
     catch (err) {
-        //TODO: Error handling
+        return false;
     }
     if (data === null) {
         return false;

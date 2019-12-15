@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 
 function Login() {
     const dispatch = useDispatch();
-    const [messages, setMessages] = useState({wrongPass: false, passwordsNotSame: false, usernameTaken: false});
+    const [messages, setMessages] = useState({wrongPass: false, passwordsNotSame: false, usernameTaken: false, error: false});
     if(Cookies.get("sessionID") === undefined) {
         Cookies.set("sessionID", Math.random().toString(36).substr(2, 9), { expires: 7 });
     }
@@ -31,33 +31,39 @@ function Login() {
                 body: JSON.stringify(bodyData)
             });
             data = await response.json();
-            if (data.length < 1) {
-                setMessages({wrongPass: true});
-                setTimeout(() => setMessages({wrongPass: false}),5000);
-                
-            }
-            else {
-                const bodyData2 = {
-                    username: username,
-                    sessionID: Cookies.get("sessionID")
-                }
-                try {
-                    response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/updateID", {
-                        method: "post",
-                        headers: {"Content-Type":"application/json"},
-                        body: JSON.stringify(bodyData2)
-                    });
-                    //let data2 = await response.json();
-                }
-                catch (err) {
-                    //TODO: Error handling
-                }
-                dispatch(setLoggedState());
-                dispatch(setUsername(username));
-            }
         }
         catch (err) {
-            console.log("Error" + err);
+            console.log(err);
+            setMessages({error: true});
+            setTimeout(() => setMessages({error: false}),1500);
+            return;
+        }
+        if (data.length < 1) {
+            setMessages({wrongPass: true});
+            setTimeout(() => setMessages({wrongPass: false}),5000);
+            
+        }
+        else {
+            const bodyData2 = {
+                username: username,
+                sessionID: Cookies.get("sessionID")
+            }
+            try {
+                response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/updateID", {
+                    method: "post",
+                    headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify(bodyData2)
+                });
+                //let data2 = await response.json();
+            }
+            catch (err) {
+                console.log(err);
+                setMessages({error: true});
+                setTimeout(() => setMessages({error: false}),1500);
+                return;
+            }
+            dispatch(setLoggedState());
+            dispatch(setUsername(username));
         }
     });
 
@@ -71,7 +77,7 @@ function Login() {
         
         if (password !== passwordAgain) {
             setMessages({passwordsNotSame: true});
-            setTimeout(() => setMessages({passwordsNotSame: false}),5000);
+            setTimeout(() => setMessages({passwordsNotSame: false}),1500);
             return;
         }
         const bodyData = {
@@ -86,7 +92,10 @@ function Login() {
             data = await response.json();
         }
         catch (err) {
-            //TODO: Error handling
+            console.log(err);
+            setMessages({error: true});
+            setTimeout(() => setMessages({error: false}),1500);
+            return;
         }
         if (data !== null) {
             setMessages({usernameTaken: true});
@@ -109,10 +118,16 @@ function Login() {
             data2 = await response2.json();
         }
         catch (err) {
-            //TODO: Error handling
+            console.log(err);
+            setMessages({error: true});
+            setTimeout(() => setMessages({error: false}),1500);
+            return;
         }
         if (data2.length < 1) {
-            //TODO: Error handling
+            console.log("Error occured while creating a user");
+            setMessages({error: true});
+            setTimeout(() => setMessages({error: false}),1500);
+            return;
         }
         else {
             dispatch(setLoggedState());
@@ -245,6 +260,12 @@ function Login() {
                 {messages.usernameTaken ?
                 <Alert variant="danger">
                 This username is already taken!
+                </Alert>
+                : ""}
+
+                {messages.error ?
+                <Alert variant="danger">
+                Error occured!
                 </Alert>
                 : ""}
             </div>

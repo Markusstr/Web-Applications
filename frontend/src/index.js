@@ -4,14 +4,12 @@ import { Provider } from "react-redux";
 import './index.css';
 import App from './App';
 import { loggedReducer } from "./reducers/logged"
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { createStore, combineReducers } from "redux";
 
 const store = createStore(
     combineReducers({
         loggedReducer
-    }),
-    applyMiddleware(thunk)
+    })
 )
 
 ReactDOM.render(

@@ -124,7 +124,7 @@ function Login() {
         <div className="login-container">
             <div>
                 <div className="login-header">
-                    <h1>PageNameHere</h1>
+                    <h1>Web applications</h1>
                 </div>
                 <div className="login-box">
                     <Form onSubmit={handleLoginSubmit}>

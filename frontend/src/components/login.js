@@ -137,137 +137,135 @@ function Login() {
 
     return (
         <div className="login-container">
-            <div>
-                <div className="login-header">
-                    <h1>Web applications</h1>
-                </div>
-                <div className="login-box">
-                    <Form onSubmit={handleLoginSubmit}>
-                        <Form.Group controlId="formBasicUsername">
-                        <Form.Label>Username</Form.Label>
-                        <InputGroup>
-                            <InputGroup.Prepend>
-                            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                            </InputGroup.Prepend>
-                            <Form.Control
-                            type="text"
-                            name="loginUsername"
-                            placeholder="Username"
-                            aria-describedby="inputGroupPrepend"
-                            required
-                            />
-                            <Form.Control.Feedback type="invalid">
-                            Please choose a username.
-                            </Form.Control.Feedback>
-                        </InputGroup>
-                        </Form.Group>
-
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                            type="password"
-                            name="loginPassword"
-                            placeholder="Password"
-                            required/>
-                            <Form.Control.Feedback type="invalid">
-                            Please choose a password.
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Remember me" />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Login
-                        </Button>
-                    </Form>
-                    <div className="createuser">
-                        <Accordion>
-                            <Card>
-                                <Card.Header>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                    Don't have account yet? Create new user.
-                                </Accordion.Toggle>
-                                </Card.Header>
-                                <Accordion.Collapse eventKey="0">
-                                <Card.Body>
-                                    <Form onSubmit={handleCreateSubmit}>
-                                        <Form.Group controlId="formCreateUsername">
-                                        <Form.Label>Username</Form.Label>
-                                        <InputGroup>
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <Form.Control
-                                            type="text"
-                                            name="createUsername"
-                                            placeholder="Username"
-                                            aria-describedby="inputGroupPrepend"
-                                            required
-                                            />
-                                            <Form.Control.Feedback type="invalid">
-                                            Please choose a username.
-                                            </Form.Control.Feedback>
-                                        </InputGroup>
-                                        </Form.Group>
-
-                                        <Form.Group controlId="formCreatePassword">
-                                            <Form.Label>Password</Form.Label>
-                                            <Form.Control
-                                            type="password"
-                                            name="createPassword"
-                                            placeholder="Password"
-                                            required/>
-                                            <Form.Control.Feedback type="invalid">
-                                            Please choose a password.
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                        <Form.Group controlId="formCreatePasswordAgain">
-                                            <Form.Label>Password again</Form.Label>
-                                            <Form.Control
-                                            type="password"
-                                            name="createPasswordAgain"
-                                            placeholder="Password again"
-                                            required/>
-                                            <Form.Control.Feedback type="invalid">
-                                            Please type the password again.
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                        <Button variant="primary" type="submit">
-                                            Create account
-                                        </Button>
-                                        
-                                    </Form>
-                                </Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                        </Accordion>
-                    </div>
-                </div>
+            <div className="login-header">
+                <h1>Web applications</h1>
             </div>
-            <div className="login-wrongpass">
-                {messages.wrongPass ?
-                <Alert variant="danger">
-                Wrong username or password!
-                </Alert>
-                : ""}
+            <div className="login-box">
+                <Form onSubmit={handleLoginSubmit}>
+                    <Form.Group controlId="formBasicUsername">
+                    <Form.Label>Username</Form.Label>
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                        <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                        type="text"
+                        name="loginUsername"
+                        placeholder="Username"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                        />
+                        <Form.Control.Feedback type="invalid">
+                        Please choose a username.
+                        </Form.Control.Feedback>
+                    </InputGroup>
+                    </Form.Group>
 
-                {messages.passwordsNotSame ?
-                <Alert variant="danger">
-                Passwords are not the same!
-                </Alert>
-                : ""}
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                        type="password"
+                        name="loginPassword"
+                        placeholder="Password"
+                        required/>
+                        <Form.Control.Feedback type="invalid">
+                        Please choose a password.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Remember me" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Login
+                    </Button>
+                </Form>
+                <div className="createuser">
+                    <Accordion>
+                        <Card>
+                            <Card.Header>
+                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                                Don't have account yet? Create new user.
+                            </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="0">
+                            <Card.Body>
+                                <Form onSubmit={handleCreateSubmit}>
+                                    <Form.Group controlId="formCreateUsername">
+                                    <Form.Label>Username</Form.Label>
+                                    <InputGroup>
+                                        <InputGroup.Prepend>
+                                        <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <Form.Control
+                                        type="text"
+                                        name="createUsername"
+                                        placeholder="Username"
+                                        aria-describedby="inputGroupPrepend"
+                                        required
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                        Please choose a username.
+                                        </Form.Control.Feedback>
+                                    </InputGroup>
+                                    </Form.Group>
 
-                {messages.usernameTaken ?
-                <Alert variant="danger">
-                This username is already taken!
-                </Alert>
-                : ""}
+                                    <Form.Group controlId="formCreatePassword">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control
+                                        type="password"
+                                        name="createPassword"
+                                        placeholder="Password"
+                                        required/>
+                                        <Form.Control.Feedback type="invalid">
+                                        Please choose a password.
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                    <Form.Group controlId="formCreatePasswordAgain">
+                                        <Form.Label>Password again</Form.Label>
+                                        <Form.Control
+                                        type="password"
+                                        name="createPasswordAgain"
+                                        placeholder="Password again"
+                                        required/>
+                                        <Form.Control.Feedback type="invalid">
+                                        Please type the password again.
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                    <Button variant="primary" type="submit">
+                                        Create account
+                                    </Button>
+                                    
+                                </Form>
+                            </Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                    </Accordion>
+                </div>
+                <div className="login-wrongpass">
+                    {messages.wrongPass ?
+                    <Alert variant="danger">
+                    Wrong username or password!
+                    </Alert>
+                    : ""}
 
-                {messages.error ?
-                <Alert variant="danger">
-                Error occured!
-                </Alert>
-                : ""}
+                    {messages.passwordsNotSame ?
+                    <Alert variant="danger">
+                    Passwords are not the same!
+                    </Alert>
+                    : ""}
+
+                    {messages.usernameTaken ?
+                    <Alert variant="danger">
+                    This username is already taken!
+                    </Alert>
+                    : ""}
+
+                    {messages.error ?
+                    <Alert variant="danger">
+                    Error occured!
+                    </Alert>
+                    : ""}
+                </div>
             </div>
         </div>
     );

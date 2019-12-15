@@ -1,6 +1,7 @@
 .app {
     background-color: rgb(240, 240, 240);
     height: 100vh;
+    min-width: 560px;
     display: flex;
     flex-direction: column;
 }
@@ -20,7 +21,9 @@
 }
 
 .date {
+    display: flex;
     position: absolute;
+    align-items: center;
     right: 10px;
 }
 
@@ -33,6 +36,7 @@
 }
 
 .main-menu-username {
+    display: flex;
     position: absolute;
     right: 10px;
 }
@@ -44,7 +48,6 @@
 }
 
 .login-box {
-    height: 350px;
     width: 450px;
     margin-top: 40px;
     position: absolute;
@@ -62,12 +65,62 @@
 }
 
 .login-wrongpass {
-    margin-top: 20px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .login-container {
+    width: 450px;
+    height: 520px;
+    margin-top: 20px;
     text-align: center;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
+}
+
+.createuser {
+    margin-top: 20px;
+}
+
+.newpost-box {
+    width: 700px;
+    margin-top: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 24px lightgray;
+}
+
+.newpost-alert {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+
+.newpost-container {
+    width: 700px;
+    height: 360px;
+    margin-top: 20px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.newpost-row {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.newpost-length {
+    position: absolute;
+    right: 10px; 
 }

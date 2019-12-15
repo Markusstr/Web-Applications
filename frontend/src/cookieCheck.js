@@ -10,7 +10,7 @@ export const checkCookie = async(username) => {
         sessionID: cookie
     }
     try {
-        response = await fetch("http://localhost:8080/api/getUserByID", {
+        response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/getUserByID", {
             method: "post",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify(bodyData)

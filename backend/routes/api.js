@@ -10,11 +10,15 @@ router.get("/getPosts", (req, res) => {
     postController.load(req, res);
 });
 
+router.post("/removePost", (req, res) => {
+    postController.remove(req, res);
+});
+
 router.post("/savePost", (req, res) => {
     postController.save(req, res);
 });
 
-router.get("/getUser", (req, res) => {
+router.post("/getUser", (req, res) => {
     userController.loadUser(req, res);
 });
 

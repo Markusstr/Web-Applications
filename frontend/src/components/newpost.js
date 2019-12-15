@@ -22,7 +22,7 @@ function NewPost() {
             text: text
         }
         try {
-            response = await fetch("http://localhost:8080/api/savePost", {
+            response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/savePost", {
                 method: "post",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(bodyData)

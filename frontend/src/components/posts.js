@@ -11,7 +11,7 @@ class Posts extends React.Component {
         //dispatch = useDispatch();
         let response, data;
         try {
-            response = await fetch("http://localhost:8080/api/getPosts");
+            response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/getPosts");
             data = await response.json();
             this.setState({fetching: false, postList: data});
         }

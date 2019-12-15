@@ -25,7 +25,7 @@ function Login() {
             sessionID: Cookies.get("sessionID")
         };
         try {
-            response = await fetch("http://localhost:8080/api/checkUser", {
+            response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/checkUser", {
                 method: "post",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(bodyData)
@@ -42,7 +42,7 @@ function Login() {
                     sessionID: Cookies.get("sessionID")
                 }
                 try {
-                    response = await fetch("http://localhost:8080/api/updateID", {
+                    response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/updateID", {
                         method: "post",
                         headers: {"Content-Type":"application/json"},
                         body: JSON.stringify(bodyData2)
@@ -78,7 +78,7 @@ function Login() {
             username: username
         };
         try {
-            response = await fetch("http://localhost:8080/api/getUser", {
+            response = await fetch("http://mongo-node-backend.rahtiapp.fi/api/getUser", {
                 method: "post",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(bodyData)
@@ -101,7 +101,7 @@ function Login() {
             sessionID: Cookies.get("sessionID")
         };
         try {
-            response2 = await fetch("http://localhost:8080/api/saveUser", {
+            response2 = await fetch("http://mongo-node-backend.rahtiapp.fi/api/saveUser", {
                 method: "post",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(bodyData2)

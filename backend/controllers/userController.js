@@ -2,7 +2,7 @@ let User = require("../models/User");
 
 exports.loadUser = async (req, res) => {
     try {
-        const user = await User.find({username: req.body.username});
+        const user = await User.findOne({username: req.body.username});
         res.status(200).json(user);
     }
     catch (err) {
@@ -10,7 +10,8 @@ exports.loadUser = async (req, res) => {
     }
 }
 
-exports.loadUserByID = async (req, res) => {
+exports.loadUserByID = async (req, res) => 
+    console.log("TÄÄLLÄ OLLAAN" + req.body.sessionID);
     try {
         const user = await User.findOne({sessionID: req.body.sessionID});
         res.status(200).json(user);
@@ -48,9 +49,7 @@ exports.saveUser = async (req, res) => {
 };
 
 exports.updateID = (req, res) => {
-    User.findOneAndUpdate({username: req.body.username}, {
-        sessionID: req.body.sessionID
-    }, err => {
+    User.findOneAndUpdate({username: req.body.username}, {sessionID: req.body.sessionID}, err => {
         if (err) {
             return res.send(500, {error : err});
         }

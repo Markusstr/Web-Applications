@@ -23,7 +23,7 @@ function App() {
     }, []);
 
     const loginCheck = async() => {
-        let data = await checkCookie(username);
+        let data = await checkCookie();
         if (data === false) {
             Cookies.set("sessionID", Math.random().toString(36).substr(2, 9), { expires: 7 });
         }

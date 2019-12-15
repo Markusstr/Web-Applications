@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 
-export const checkCookie = async(username) => {
+export const checkCookie = async() => {
     let response, data;
     let cookie = Cookies.get("sessionID");
     if (cookie === null || cookie === undefined) {

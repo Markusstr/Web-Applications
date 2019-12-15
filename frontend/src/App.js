@@ -22,37 +22,6 @@ function App() {
         loginCheck();
     }, []);
 
-    /*const checkCookie2 = async () => {
-
-        if (data === null) {
-            console.log("ei löytynyt");
-            Cookies.set("sessionID", Math.random().toString(36).substr(2, 9), { expires: 7 });
-            const bodyData2 = {
-                username: username,
-                sessionID: Cookies.get("sessionID")
-            }
-            try {
-                response = await fetch("http://localhost:8080/api/updateID", {
-                    method: "post",
-                    headers: {"Content-Type":"application/json"},
-                    body: JSON.stringify(bodyData2)
-                });
-                //let data2 = await response.json();
-            }
-            catch (err) {
-                //TODO: Error handling
-            }
-        }
-        else {
-            
-        }
-    }
-    if (Cookies.get("sessionID") !== undefined) {
-        console.log("test");
-        checkCookie();
-        console.log(Cookies.get("sessionID"));
-    }*/
-
     const loginCheck = async() => {
         let data = await checkCookie(username);
         console.log(data)

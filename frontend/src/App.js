@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from "./components/menu";
 import Login from "./components/login";
 import Posts from "./components/posts";
+import NewPost from "./components/newpost";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setLoggedState, setSessionID, setUsername } from "./actions/logged";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { checkCookie } from "./cookieCheck";
 
 function App() {
     let logged = useSelector(state => state.loggedReducer.loggedState),
@@ -16,34 +18,18 @@ function App() {
 
     const dispatch = useDispatch();
 
-    /*const updatePage = () => {
-        const [num, setNum] = useState(true);
-        return () => setValue(value => !value);
-        console.log(num);
-    }*/
+    useEffect(() => {
+        loginCheck();
+    }, []);
 
-    const checkCookie = async () => {
-        let response, data, dataUsername;
-        const cookie = Cookies.get("sessionID");
-        const bodyData = {
-            sessionID: cookie
-        }
-        try {
-            response = await fetch("http://localhost:8080/api/getUserByID", {
-                method: "post",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify(bodyData)
-            });
-            data = await response.json();
-            dataUsername = data.username;
-        }
-        catch (err) {
-            //TODO: Error handling
-        }
+    /*const checkCookie2 = async () => {
+
         if (data === null) {
+            console.log("ei löytynyt");
+            Cookies.set("sessionID", Math.random().toString(36).substr(2, 9), { expires: 7 });
             const bodyData2 = {
                 username: username,
-                sessionID: cookie
+                sessionID: Cookies.get("sessionID")
             }
             try {
                 response = await fetch("http://localhost:8080/api/updateID", {
@@ -58,16 +44,28 @@ function App() {
             }
         }
         else {
-            dispatch(setLoggedState());
-            dispatch(setSessionID(cookie));
-            dispatch(setUsername(dataUsername));
+            
         }
     }
-    if(Cookies.get("sessionID") === undefined) {
-        Cookies.set("sessionID", Math.random().toString(36).substr(2, 9), { expires: 7 });
-    }
-    else {
+    if (Cookies.get("sessionID") !== undefined) {
+        console.log("test");
         checkCookie();
+        console.log(Cookies.get("sessionID"));
+    }*/
+
+    const loginCheck = async() => {
+        let data = await checkCookie(username);
+        console.log(data)
+        if (data === false) {
+            console.log("uusi")
+            Cookies.set("sessionID", Math.random().toString(36).substr(2, 9), { expires: 7 });
+        }
+        else {
+            console.log("löytyi suoraan");
+            dispatch(setLoggedState());
+            dispatch(setSessionID(Cookies.get("sessionID")));
+            dispatch(setUsername(data.username));
+        }
         
     }
 
@@ -76,10 +74,10 @@ function App() {
             {logged ? 
             <BrowserRouter>
                 <Menu />
-                <Posts />
                 <Switch>
+                    <Route exact path="/" component={Posts} />
                     <Route path="/test1" component={Test1} />
-                    <Route path="/test2" component={Test2} />
+                    <Route path="/newpost" component={NewPost} />
                 </Switch>
             </BrowserRouter> :
             <Login />
@@ -91,12 +89,6 @@ function App() {
 const Test1 = () => {
     return (
         <p>this is test page1</p>
-    );
-}
-
-const Test2 = () => {
-    return (
-        <p>this is test page2</p>
     );
 }
 

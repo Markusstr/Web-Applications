@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { removeLoggedState } from "../actions/logged";
+import { removeLoggedState, setUsername } from "../actions/logged";
 import { LinkContainer } from "react-router-bootstrap";
 import Cookies from "js-cookie";
 
@@ -11,8 +11,9 @@ function Menu() {
     let username = useSelector(username => username.loggedReducer.username);
 
     const logout = () => {
-        Cookies.remove("sessionID")
-        dispatch(removeLoggedState())
+        Cookies.remove("sessionID");
+        dispatch(setUsername(null));
+        dispatch(removeLoggedState());
     }
 
     return (
@@ -26,18 +27,20 @@ function Menu() {
                     </LinkContainer>
                 </Nav.Item>
                 <Nav.Item>
-                    <LinkContainer to="/test1">
-                        <Nav.Link eventKey="2">
-                        Profile
+                    <LinkContainer to="/newpost">
+                        <Nav.Link eventKey="3">
+                        New post
                     </Nav.Link>
                     </LinkContainer>
                 </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="3" onClick={() => logout()}>
-                    Log out
-                    </Nav.Link>
-                </Nav.Item>
                 <div className="main-menu-username">
+                    <Nav.Item>
+                        <LinkContainer exact to="/#">
+                        <Nav.Link eventKey="4" onClick={() => logout()}>
+                        Log out
+                        </Nav.Link>
+                        </LinkContainer>
+                    </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="disabled" disabled>
                         Signed in: {username}

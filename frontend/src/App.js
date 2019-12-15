@@ -13,8 +13,7 @@ import { useSelector } from "react-redux";
 import { checkCookie } from "./cookieCheck";
 
 function App() {
-    let logged = useSelector(state => state.loggedReducer.loggedState),
-        username = useSelector(state => state.loggedReducer.username);
+    let logged = useSelector(state => state.loggedReducer.loggedState);
 
     const dispatch = useDispatch();
 
